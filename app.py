@@ -3,7 +3,18 @@ import os
 import random
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("FLASK_SECRET_KEY", "super-secret-spy-key")
+
+# --- HARDENING: SECURITY CONFIGURATION ---
+# Use a secret key from environment variables, or generate a random one if not provided.
+# Generating a random key on every restart is secure for a session-based app, 
+# but note that it will invalidate existing sessions when the server restarts.
+app.secret_key = os.environ.get("FLASK_SECRET_KEY", os.urandom(24).hex())
+
+# Security headers for cookies
+app.config['SESSION_COOKIE_HTTPONLY'] = True
+app.config['SESSION_COOKIE_SECURE'] = True
+app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
+# -----------------------------------------
 
 # Mapping results to local image paths (relative to 'static' folder)
 IMAGE_MAP = {
@@ -73,7 +84,17 @@ TREE = {
                             "text": "Does she avoid talking about Taiwan?",
                             "options": [
                                 {"text": "Yes", "next": {"type": "result", "text": "SPY"}},
-                                {"text": "No", "next": {"type": "result", "text": "[REDACTED]"}}
+                                {
+                                    "text": "No",
+                                    "next": {
+                                        "type": "question",
+                                        "text": "Does she ask you about classified documents?",
+                                        "options": [
+                                            {"text": "Yes", "next": {"type": "result", "text": "[REDACTED]"}},
+                                            {"text": "No", "next": {"type": "result", "text": "Probably not a spy"}}
+                                        ]
+                                    }
+                                }
                             ]
                         }
                     },
@@ -157,7 +178,11 @@ def result():
     result_text = node['text'].lower()
     
     # Robust keyword-based lookup
-    if "spy" in result_text:
+    if "[redacted]" in result_text:
+        image_list = IMAGE_MAP["spy"]
+    elif "not a spy" in result_text:
+        image_list = IMAGE_MAP["default"]
+    elif "spy" in result_text:
         image_list = IMAGE_MAP["spy"]
     elif "vc" in result_text:
         image_list = IMAGE_MAP["vc"]

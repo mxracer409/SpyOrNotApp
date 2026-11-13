@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spy or Not? - Question</title>
+    <!-- Importing a typewriter-style font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body class="question-page">
     <div class="main-wrapper">
-        <div class="container">
-            <h1 class="question-title">Question</h1>
+        <div class="container dossier-container">
+            <h1 class="dossier-title">QUESTION</h1>
             <p class="question-text">{{ node.text }}</p>
             <form method="POST">
                 {% for option in node.options %}
@@ -21,7 +23,7 @@
         </div>
 
         <div class="sidebar">
-            <h2>🕵️‍♂️ Decision Log</h2>
+            <h2>🕵️‍♂️ DECISION LOG</h2>
             <ul class="history-list">
                 {% for item in history %}
                 <li class="history-item">→ {{ item }}</li>

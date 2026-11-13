@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spy or Not?</title>
+    <!-- Importing a typewriter-style font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body class="landing">
     <div class="main-wrapper">
-        <div class="container">
-            <h1>🕵️‍♂️ Spy or Not? 🕵️‍♀️</h1>
-            <p>A 100% scientifically accurate tool for tech professionals.</p>
-            <a href="{{ url_for('question') }}" class="btn">Start the Test</a>
+        <div class="container dossier-container">
+            <h1 class="dossier-title">🕵️‍♂️ SPY OR NOT? 🕵️‍♀️</h1>
+            <p class="dossier-subtitle">CLASSIFIED INTELLIGENCE REPORT</p>
+            <div class="stamp-overlay"></div>
+            <p class="dossier-text">Subject: Identity Verification of Significant Other</p>
+            <a href="{{ url_for('question') }}" class="btn">Access File</a>
         </div>
     </div>
 </body>

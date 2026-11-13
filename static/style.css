@@ -1,14 +1,15 @@
 
 body {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Special Elite', 'Courier New', Courier, monospace;
     background-color: #0d0d0d;
-    color: #e0e0e0;
+    color: #d2b48c;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
     text-align: center;
+    background-image: radial-gradient(circle, #1a1a1a 0%, #0d0d0d 100%);
 }
 
 .main-wrapper {
@@ -22,31 +23,43 @@ body {
 }
 
 .container {
-    background: #1a1a1a;
+    background: #f4e4bc;
+    color: #2c1e1e;
     padding: 2.5rem;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.7), 0 0 15px rgba(211, 47, 47, 0.3);
+    border-radius: 2px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
     width: 100%;
-    border: 1px solid #333;
+    border: 1px solid #d2b48c;
+    position: relative;
+    background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
 }
 
-/* Sidebar Styling */
+.dossier-container::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.05);
+    pointer-events: none;
+}
+
 .sidebar {
     width: 250px;
-    background: #1a1a1a;
+    background: #2c1e1e;
+    color: #d2b48c;
     padding: 1.5rem;
-    border-radius: 12px;
-    border: 1px solid #333;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    border-radius: 4px;
+    border: 1px solid #4a352a;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
     text-align: left;
 }
 
 .sidebar h2 {
     font-size: 1.2rem;
-    color: #d32f2f;
-    border-bottom: 1px solid #333;
+    color: #d2b48c;
+    border-bottom: 1px solid #4a352a;
     padding-bottom: 0.5rem;
     margin-top: 0;
+    font-family: 'Special Elite', cursive;
 }
 
 .history-list {
@@ -58,8 +71,8 @@ body {
 .history-item {
     font-size: 0.9rem;
     padding: 0.5rem 0;
-    border-bottom: 1px solid #222;
-    color: #aaa;
+    border-bottom: 1px solid #4a352a;
+    color: #a68b6a;
 }
 
 .history-item:last-child {
@@ -68,9 +81,9 @@ body {
 
 h1 {
     margin-bottom: 1.5rem;
-    color: #d32f2f;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    letter-spacing: 2px;
+    color: #8b0000;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    letter-spacing: 1px;
 }
 
 p {
@@ -81,45 +94,46 @@ p {
 
 .btn {
     display: inline-block;
-    padding: 12px 24px;
-    background-color: #d32f2f;
-    color: white;
+    padding: 10px 20px;
+    background-color: #8b0000;
+    color: #f4e4bc;
     text-decoration: none;
-    border-radius: 4px;
-    border: none;
+    border-radius: 0;
+    border: 1px solid #4a0000;
     cursor: pointer;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: bold;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     margin: 8px;
     text-transform: uppercase;
+    font-family: 'Special Elite', cursive;
 }
 
 .btn:hover {
-    background-color: #b71c1c;
-    box-shadow: 0 0 15px rgba(211, 47, 47, 0.6);
-    transform: translateY(-2px);
+    background-color: #a52a2a;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    transform: scale(1.05);
 }
 
 .question-text {
     font-weight: bold;
     font-size: 1.6rem;
-    color: #fff;
+    color: #2c1e1e;
 }
 
 .result-text {
     font-size: 2.2rem;
     font-weight: bold;
-    color: #d32f2f;
+    color: #8b0000;
     margin-bottom: 1rem;
 }
 
 .result-image {
     width: 100%;
-    border-radius: 8px;
+    border-radius: 0;
     margin-bottom: 1.5rem;
-    border: 2px solid #333;
-    animation: fadeIn 1s ease-in;
+    border: 5px solid #2c1e1e;
+    animation: fadeIn 1.5s ease-in;
 }
 
 @keyframes fadeIn {
@@ -132,10 +146,9 @@ p {
 }
 
 .landing p {
-    color: #888;
+    color: #d2b48c;
 }
 
-/* For mobile responsiveness */
 @media (max-width: 768px) {
     .main-wrapper {
         flex-direction: column;
@@ -143,7 +156,7 @@ p {
     }
     .sidebar {
         width: 90%;
-        order: 2; /* Move sidebar below content on mobile */
+        order: 2;
     }
     .container {
         order: 1;

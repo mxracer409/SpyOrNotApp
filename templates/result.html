@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spy or Not? - Result</title>
+    <!-- Importing a typewriter-style font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body class="result-page">
     <div class="main-wrapper">
-        <div class="container">
+        <div class="container dossier-container">
             <h1 class="result-text">{{ result }}</h1>
             <img src="{{ image_url }}" alt="Verdict Image" class="result-image">
             <br>
-            <a href="{{ url_for('index') }}" class="btn">Try Again</a>
+            <a href="{{ url_for('index') }}" class="btn">Back to Base</a>
         </div>
 
         <div class="sidebar">
-            <h2>🕵️‍♂️ Decision Log</h2>
+            <h2>🕵️‍♂️ DECISION LOG</h2>
             <ul class="history-list">
                 {% for item in history %}
                 <li class="history-item">→ {{ item }}</li>
