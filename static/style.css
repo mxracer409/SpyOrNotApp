@@ -6,9 +6,19 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     text-align: center;
+}
+
+.main-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    width: 95%;
+    max-width: 1200px;
+    padding: 2rem;
 }
 
 .container {
@@ -16,9 +26,44 @@ body {
     padding: 2.5rem;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.7), 0 0 15px rgba(211, 47, 47, 0.3);
-    max-width: 500px;
-    width: 90%;
+    width: 100%;
     border: 1px solid #333;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    background: #1a1a1a;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #333;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    text-align: left;
+}
+
+.sidebar h2 {
+    font-size: 1.2rem;
+    color: #d32f2f;
+    border-bottom: 1px solid #333;
+    padding-bottom: 0.5rem;
+    margin-top: 0;
+}
+
+.history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.history-item {
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #222;
+    color: #aaa;
+}
+
+.history-item:last-child {
+    border-bottom: none;
 }
 
 h1 {
@@ -83,9 +128,24 @@ p {
 }
 
 .landing h1 {
-    font-size: 3.5rem;
+    font-size: 2.8rem;
 }
 
 .landing p {
     color: #888;
+}
+
+/* For mobile responsiveness */
+@media (max-width: 768px) {
+    .main-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    .sidebar {
+        width: 90%;
+        order: 2; /* Move sidebar below content on mobile */
+    }
+    .container {
+        order: 1;
+    }
 }

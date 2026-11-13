@@ -7,11 +7,22 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body class="result-page">
-    <div class="container">
-        <h1 class="result-text">{{ result }}</h1>
-        <img src="{{ image_url }}" alt="Verdict Image" class="result-image">
-        <br>
-        <a href="{{ url_for('index') }}" class="btn">Try Again</a>
+    <div class="main-wrapper">
+        <div class="container">
+            <h1 class="result-text">{{ result }}</h1>
+            <img src="{{ image_url }}" alt="Verdict Image" class="result-image">
+            <br>
+            <a href="{{ url_for('index') }}" class="btn">Try Again</a>
+        </div>
+
+        <div class="sidebar">
+            <h2>🕵️‍♂️ Decision Log</h2>
+            <ul class="history-list">
+                {% for item in history %}
+                <li class="history-item">→ {{ item }}</li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 </body>
 </html>
