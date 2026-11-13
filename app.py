@@ -1,8 +1,29 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 import os
+import random
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("FLASK_SECRET_KEY", "super-secret-spy-key")
+
+# Mapping results to image categories
+IMAGE_MAP = {
+    "SPY": [
+        "https://images.unsplash.com/photo-1557597774-9d271f373d9a?q=80&w=500&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1509248961158-e54f693474ba?q=80&w=500&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1585951237318-9ea55a665d6f?q=80&w=500&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1485875437342-9d8117f1992e?q=80&w=500&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1503197219967-b104610a3940?q=80&w=500&auto=format&fit=crop"
+    ],
+    "VC associate (worse)": [
+        "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=500&auto=format&fit=crop"
+    ],
+    "IRS agent": [
+        "https://images.unsplash.com/photo-1554224155-672621df789b?q=80&w=500&auto=format&fit=crop"
+    ],
+    "default": [
+        "https://images.unsplash.com/photo-1516589174184-c687833c3a6a?q=80&w=500&auto=format&fit=crop"
+    ]
+}
 
 # Decision Tree Structure
 TREE = {
@@ -133,7 +154,12 @@ def result():
     node = session.get('current_node')
     if not node or node.get('type') != 'result':
         return redirect(url_for('index'))
-    return render_template('result.html', result=node['text'])
+    
+    result_text = node['text']
+    image_list = IMAGE_MAP.get(result_text, IMAGE_MAP["default"])
+    image_url = random.choice(image_list)
+    
+    return render_template('result.html', result=result_text, image_url=image_url)
 
 if __name__ == '__main__':
     app.run(debug=True)

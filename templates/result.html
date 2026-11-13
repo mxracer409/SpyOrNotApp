@@ -8,8 +8,9 @@
 </head>
 <body class="result-page">
     <div class="container">
-        <h1>The Verdict</h1>
-        <p class="result-text">{{ result }}</p>
+        <h1 class="result-text">{{ result }}</h1>
+        <img src="{{ image_url }}" alt="Verdict Image" class="result-image">
+        <br>
         <a href="{{ url_for('index') }}" class="btn">Try Again</a>
     </div>
 </body>
