@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spy or Not? - Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="result-page">
+    <div class="container">
+        <h1>The Verdict</h1>
+        <p class="result-text">{{ result }}</p>
+        <a href="{{ url_for('index') }}" class="btn">Try Again</a>
+    </div>
+</body>
+</html>

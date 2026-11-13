@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spy or Not? - Question</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="question-page">
+    <div class="container">
+        <h1>Question</h1>
+        <p class="question-text">{{ node.text }}</p>
+        <form method="POST">
+            {% for option in node.options %}
+            <button type="submit" name="choice" value="{{ loop.index0 }}" class="btn">
+                {{ option.text }}
+            </button>
+            {% endfor %}
+        </form>
+    </div>
+</body>
+</html>
